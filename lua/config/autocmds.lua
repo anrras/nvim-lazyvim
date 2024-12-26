@@ -5,13 +5,13 @@
 -- with `vim.api.nvim_create_autocmd`
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
-local aucmd = vim.api.nvim_create_autocmd
+-- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell
+local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
 local toggle_relative_number = vim.api.nvim_create_augroup("ToggleRelativeNumber", { clear = true })
 
 -- No undofile for temps files
-aucmd("BufWritePre", {
+autocmd("BufWritePre", {
   pattern = { "*.tmp", "*.log", "*.bak" },
   callback = function()
     cmd([[:setlocal noundofile]])
@@ -19,7 +19,7 @@ aucmd("BufWritePre", {
 })
 
 -- When enter in InsertMode disable relativenumber
-aucmd("InsertEnter", {
+autocmd("InsertEnter", {
   group = toggle_relative_number,
   desc = "When enter in InsertMode disable relativenumber",
   callback = function()
@@ -28,7 +28,7 @@ aucmd("InsertEnter", {
 })
 
 -- When leave InsertMode enable relativenumber
-aucmd("InsertLeave", {
+autocmd("InsertLeave", {
   group = toggle_relative_number,
   desc = "When leave InsertMode enable relativenumber",
   callback = function()
