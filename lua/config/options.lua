@@ -4,3 +4,15 @@
 
 -- Enable this option to avoid conflicts with Prettier.
 vim.g.lazyvim_prettier_needs_config = true
+
+vim.opt.listchars = {
+  space = ".",
+  eol = "↲",
+  nbsp = "␣",
+  trail = "·",
+  precedes = "←",
+  extends = "→",
+  tab = "¬ ",
+  conceal = "※",
+}
+vim.opt.list = false

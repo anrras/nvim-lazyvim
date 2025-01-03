@@ -21,6 +21,9 @@ map("n", "N", "Nzzzv", opts)
 -- Redefine Ctrl+s to save with the custom function
 vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", opts)
 
+----- OIL -----
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- Custom save function
 function SaveFile()
   -- Check if a buffer with a file is open
