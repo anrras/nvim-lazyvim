@@ -16,3 +16,4 @@ vim.opt.listchars = {
   conceal = "※",
 }
 vim.opt.list = false
+vim.opt.colorcolumn = "80"
