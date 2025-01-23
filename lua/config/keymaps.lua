@@ -5,7 +5,7 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Back to normal mode with jj
-map("i", "jj", "<ESC>", opts)
+map("i", "jk", "<ESC>", opts)
 
 -- Center the document in the last line you edit the file
 map("n", ";", "g;zzzv", opts)

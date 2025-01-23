@@ -35,3 +35,21 @@ autocmd("InsertLeave", {
     vim.opt.relativenumber = true
   end,
 })
+
+-- Auto source lua files after save
+autocmd("BufWritePost", {
+  pattern = { "*.lua" },
+  desc = "Auto source lua files after save",
+  callback = function()
+    cmd([[:source % ]])
+  end,
+})
+
+--Establecer el tipo de archivo como "env"
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.env",
+  callback = function()
+    vim.bo.filetype = "env"
+    vim.bo.syntax = "sh"
+  end,
+})

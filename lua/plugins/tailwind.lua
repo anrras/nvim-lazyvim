@@ -1,8 +1,9 @@
-return {
-  "neovim/nvim-lspconfig",
-  opts = {
-    servers = {
-      tailwind = {},
-    },
-  },
-}
+return {}
+-- return {
+--   "neovim/nvim-lspconfig",
+--   opts = {
+--     servers = {
+--       tailwind = {},
+--     },
+--   },
+-- }
