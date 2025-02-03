@@ -13,8 +13,9 @@ local toggle_relative_number = vim.api.nvim_create_augroup("ToggleRelativeNumber
 -- No undofile for temps files
 autocmd("BufWritePre", {
   pattern = { "*.tmp", "*.log", "*.bak" },
+  desc = "No undofile for temps files",
   callback = function()
-    cmd([[:setlocal noundofile]])
+    vim.bo.undofile = false
   end,
 })
 
@@ -45,11 +46,19 @@ autocmd("BufWritePost", {
   end,
 })
 
---Establecer el tipo de archivo como "env"
+-- Read .env files as "env" and set syntax like sh
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.env",
   callback = function()
     vim.bo.filetype = "env"
     vim.bo.syntax = "sh"
+  end,
+})
+
+-- Set the end of line (LF)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*", -- Aplica a todos los archivos.
+  callback = function()
+    vim.bo.fileformat = "unix"
   end,
 })
