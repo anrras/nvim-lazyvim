@@ -27,5 +27,19 @@ return {
       -- ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" }, -- Change directory for the current tab
     },
     use_default_keymaps = false, -- Do not use default key mappings
+    view_options = {
+      show_hidden = false,
+      -- This function defines what is considered a "hidden" file
+      is_hidden_file = function(name, bufnr)
+        local hidden_files = { "node_modules", "." }
+
+        for _, value in ipairs(hidden_files) do
+          if vim.startswith(name, value) then
+            return true
+          end
+        end
+        return false
+      end,
+    },
   },
 }

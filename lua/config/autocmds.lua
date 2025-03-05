@@ -62,3 +62,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo.fileformat = "unix"
   end,
 })
+
+-- Agrega esto a tu init.lua o dentro del archivo de configuración
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function(args)
+    -- Eliminar caracteres CR (\r) en todo el buffer
+    vim.cmd([[silent! %s/\r//e]])
+  end,
+})
